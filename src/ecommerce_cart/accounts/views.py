@@ -61,7 +61,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
     @action(detail=True, methods=['PUT'], url_path='add-to-cart')
     def add_product_to_cart(self, request, *args, **kwargs):
         """
-        Endpoint to add product to current user's open cart
+        Endpoint to add/update product to current user's open cart
         """
         customer = self.get_object()
         open_cart = self._get_open_cart(customer)
@@ -82,7 +82,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
     @action(detail=True, methods=['POST'], url_path='remove-product')
     def remove_product_from_cart(self, request, *args, **kwargs):
         """
-        Endpoint to remove product to current user's open cart
+        Endpoint to remove product from current user's open cart
         """
         customer = self.get_object()
         open_cart = customer.carts.get_open_cart()
@@ -115,6 +115,9 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
     )
     @action(detail=True, methods=['POST'], url_path='update-product-quantity')
     def update_product_quantity_in_cart(self, request, *args, **kwargs):
+        """
+        Endpoint to update quantity of product in current user's open cart
+        """
         customer = self.get_object()
         open_cart = customer.carts.get_open_cart()
         serializer = self.get_serializer(data=request.data)
@@ -148,6 +151,9 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
     )
     @action(detail=True, methods=['GET'], url_path='checkout')
     def checkout(self, request, *args, **kwargs):
+        """
+        Endpoint to check out current user's open cart
+        """
         customer = self.get_object()
         open_cart = customer.carts.get_open_cart()
         try:
