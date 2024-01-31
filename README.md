@@ -1,4 +1,4 @@
-# Simple Ecommerce Cart
+[# Simple Ecommerce Cart
 
 ## Author
 Ahmed Samy
@@ -35,9 +35,9 @@ Ahmed Samy
 Open your browser and go to http://localhost:8000 to start testing the app.
 
 ### Testing the App
-Visit http://localhost:8000/api/schema/swagger-ui/#/ in your browser.
-Use the Swagger UI interface to explore and test the available API endpoints.
-
+- Visit http://localhost:8000/api/schema/swagger-ui/#/ in your browser. 
+- Use the Swagger UI interface to explore and test the available API endpoints. 
+- Navigate to http://localhost:8000/api/schema/swagger-ui/#/customers/customers_create and create a Customer user. Use its ID in all other requests.
 ### Notes
 Ensure that Docker and Docker Compose are installed on your machine before running the project.
-If you encounter any issues, refer to the project's documentation or contact the author.
+If you encounter any issues, refer to the project's documentation or contact the author.  
