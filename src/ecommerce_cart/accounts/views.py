@@ -1,4 +1,4 @@
-from drf_spectacular.utils import extend_schema
+from drf_spectacular.utils import extend_schema, extend_schema_view
 from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -8,7 +8,9 @@ from carts.serializers import CartSerializer, RetrieveCartSerializer, AddProduct
 from .models import Customer
 from .serializers import CustomerSerializer
 
-
+@extend_schema_view(
+    create=extend_schema(description='Used to create users.')
+)
 class CustomerViewSet(mixins.RetrieveModelMixin,
                       mixins.CreateModelMixin,
                       viewsets.GenericViewSet):
@@ -35,6 +37,9 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
 
     @action(detail=True, methods=['GET'], url_path='open-carts')
     def my_open_cart(self, request, *args, **kwargs):
+        """
+        End point to get current user's open cart
+        """
         customer = self.get_object()
         open_cart = customer.carts.get_open_cart()
         serializer = self.get_serializer(open_cart)
@@ -55,6 +60,9 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
     )
     @action(detail=True, methods=['PUT'], url_path='add-to-carts')
     def add_product_to_cart(self, request, *args, **kwargs):
+        """
+        Endpoint to add product to current user's open cart
+        """
         customer = self.get_object()
         open_cart = self._get_open_cart(customer)
         serializer = self.get_serializer(data=request.data)
@@ -73,6 +81,9 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
 
     @action(detail=True, methods=['POST'], url_path='remove-product')
     def remove_product_from_cart(self, request, *args, **kwargs):
+        """
+        Endpoint to remove product to current user's open cart
+        """
         customer = self.get_object()
         open_cart = customer.carts.get_open_cart()
         product_id = request.data.get('product_id')  # Assuming you pass the product_id as a parameter
