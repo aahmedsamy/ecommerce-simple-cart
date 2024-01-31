@@ -1,1 +1,2 @@
 venv
+/src/ecommerce_cart/db.sqlite3
