@@ -25,19 +25,6 @@ class CartSerializer(serializers.ModelSerializer):
         fields = ['id', 'ordered', 'product']
         read_only_fields = ['ordered']
 
-    def create(self, validated_data):
-        products_data = validated_data.pop('product', [])
-        cart_instance = self.instance
-
-        for product_data in products_data:
-            # Create or get the product based on the provided data
-            product, _ = Product.objects.get(id=product_data.get('id'))
-
-            # Add the product to the existing carts
-            cart_instance.add_product_to_cart(product, product_data.get('quantity'))
-
-        return cart_instance
-
 
 class CartItemSerializer(serializers.ModelSerializer):
     class Meta:

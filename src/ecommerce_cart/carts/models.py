@@ -1,5 +1,4 @@
 from django.db import models, transaction
-from django.db.models import F
 
 from accounts.models import Customer
 from .managers import CartManager

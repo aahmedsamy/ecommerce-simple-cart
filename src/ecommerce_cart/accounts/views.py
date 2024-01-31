@@ -3,7 +3,7 @@ from rest_framework import mixins, viewsets, status
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
-from carts.models import Cart, Product
+from carts.models import Product
 from carts.serializers import CartSerializer, RetrieveCartSerializer, AddProductToCartSerializer, ProductIdSerializer
 from .models import Customer
 from .serializers import CustomerSerializer
@@ -86,7 +86,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
         """
         customer = self.get_object()
         open_cart = customer.carts.get_open_cart()
-        product_id = request.data.get('product_id')  # Assuming you pass the product_id as a parameter
+        product_id = request.data.get('product_id')
 
         try:
             open_cart.remove_product_from_cart(product_id)

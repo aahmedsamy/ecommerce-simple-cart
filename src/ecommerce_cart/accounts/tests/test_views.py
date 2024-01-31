@@ -1,15 +1,9 @@
-# your_app/tests/test_views.py
-
 import pytest
 from rest_framework import status
-from rest_framework.test import APIRequestFactory, APIClient
+from rest_framework.test import APIClient
 from django.urls import reverse
-from django.contrib.auth.models import User
 from carts.models import Cart, Product
-from carts.serializers import CartSerializer, RetrieveCartSerializer, AddProductToCartSerializer, ProductIdSerializer
 from ..models import Customer
-from ..serializers import CustomerSerializer
-from ..views import CustomerViewSet
 
 
 @pytest.fixture
@@ -54,7 +48,6 @@ def test_add_product_to_cart(api_client, customer, open_cart, product):
     assert response.status_code == status.HTTP_201_CREATED
     assert response.data['detail'] == 'Product added to the carts.'
 
-    # Additional assertions based on your application logic
 
 
 @pytest.mark.django_db

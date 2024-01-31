@@ -2,7 +2,7 @@ import pytest
 from django.db import transaction
 from model_bakery import baker
 
-from carts.models import Cart
+from ..models import Cart
 
 
 @pytest.fixture
@@ -108,7 +108,6 @@ def test_checkout_insufficient_stock(open_cart, sample_product):
     sample_product.in_stock_quantity = 2
     sample_product.save()
 
-    # Use context manager to catch the exception and check the error message
     with pytest.raises(ValueError) as exc_info:
         open_cart.checkout()
     # Check if the expected substring is in the error message
