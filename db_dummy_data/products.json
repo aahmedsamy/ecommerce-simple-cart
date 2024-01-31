@@ -1,0 +1,162 @@
+[
+  {
+    "model": "carts.product",
+    "pk": 1,
+    "fields": {
+      "name": "Product1",
+      "in_stock_quantity": 10
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 2,
+    "fields": {
+      "name": "Product2",
+      "in_stock_quantity": 5
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 3,
+    "fields": {
+      "name": "Product3",
+      "in_stock_quantity": 20
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 4,
+    "fields": {
+      "name": "Product4",
+      "in_stock_quantity": 15
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 5,
+    "fields": {
+      "name": "Product5",
+      "in_stock_quantity": 8
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 6,
+    "fields": {
+      "name": "Product6",
+      "in_stock_quantity": 12
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 7,
+    "fields": {
+      "name": "Product7",
+      "in_stock_quantity": 25
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 8,
+    "fields": {
+      "name": "Product8",
+      "in_stock_quantity": 18
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 9,
+    "fields": {
+      "name": "Product9",
+      "in_stock_quantity": 7
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 10,
+    "fields": {
+      "name": "Product10",
+      "in_stock_quantity": 30
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 11,
+    "fields": {
+      "name": "Product11",
+      "in_stock_quantity": 22
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 12,
+    "fields": {
+      "name": "Product12",
+      "in_stock_quantity": 14
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 13,
+    "fields": {
+      "name": "Product13",
+      "in_stock_quantity": 11
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 14,
+    "fields": {
+      "name": "Product14",
+      "in_stock_quantity": 17
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 15,
+    "fields": {
+      "name": "Product15",
+      "in_stock_quantity": 9
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 16,
+    "fields": {
+      "name": "Product16",
+      "in_stock_quantity": 23
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 17,
+    "fields": {
+      "name": "Product17",
+      "in_stock_quantity": 19
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 18,
+    "fields": {
+      "name": "Product18",
+      "in_stock_quantity": 13
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 19,
+    "fields": {
+      "name": "Product19",
+      "in_stock_quantity": 16
+    }
+  },
+  {
+    "model": "carts.product",
+    "pk": 20,
+    "fields": {
+      "name": "Product20",
+      "in_stock_quantity": 28
+    }
+  }
+]
