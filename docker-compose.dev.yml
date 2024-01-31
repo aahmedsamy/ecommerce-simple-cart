@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  web:
+    image: ecommerce_cart/web
+    container_name: ecommerce_cart-backend-container
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src/ecommerce_cart/:/workspace/ecommerce_cart/
+    ports:
+      - 8000:8000
+    env_file:
+      - ./.env
