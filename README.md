@@ -28,8 +28,11 @@ Ahmed Samy
 5. Load initial data into the database (example: loading products from ../db_dummy_data/products.json):
    ```bash
    python manage.py loaddata ../db_dummy_data/products.json
+6. To run tests.
+   ```bash
+   pytest
 ----
-Open your browser and go to http://localhost:8000/api/schema/swagger-ui/#/ to start testing the app.
+Open your browser and go to http://localhost:8000 to start testing the app.
 
 ### Testing the App
 Visit http://localhost:8000/api/schema/swagger-ui/#/ in your browser.
