@@ -35,7 +35,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
     def _handle_exception_response(self, exception):
         return Response({'error': str(exception)}, status=status.HTTP_400_BAD_REQUEST)
 
-    @action(detail=True, methods=['GET'], url_path='open-carts')
+    @action(detail=True, methods=['GET'], url_path='open-cart')
     def my_open_cart(self, request, *args, **kwargs):
         """
         End point to get current user's open cart
@@ -48,7 +48,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
     @extend_schema(
         responses={
             status.HTTP_200_OK: {
-                "example": {'detail': 'Product added to the carts.'}
+                "example": {'detail': 'Product added to the cart.'}
             },
             status.HTTP_400_BAD_REQUEST: {
                 "example": {'error': 'Product does not exist.'}
@@ -58,7 +58,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
             },
         }
     )
-    @action(detail=True, methods=['PUT'], url_path='add-to-carts')
+    @action(detail=True, methods=['PUT'], url_path='add-to-cart')
     def add_product_to_cart(self, request, *args, **kwargs):
         """
         Endpoint to add product to current user's open cart
@@ -73,7 +73,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
         try:
             product = Product.objects.get(id=product_id)
             open_cart.add_product_to_cart(product, quantity)
-            return Response({'detail': 'Product added to the carts.'}, status=status.HTTP_201_CREATED)
+            return Response({'detail': 'Product added to the cart.'}, status=status.HTTP_201_CREATED)
         except Product.DoesNotExist as e:
             return self._handle_exception_response(e)
         except ValueError as e:
@@ -90,14 +90,14 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
 
         try:
             open_cart.remove_product_from_cart(product_id)
-            return Response({'detail': 'Product removed from the carts.'}, status=status.HTTP_200_OK)
+            return Response({'detail': 'Product removed from the cart.'}, status=status.HTTP_200_OK)
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_400_BAD_REQUEST)
 
     @extend_schema(
         responses={
             status.HTTP_200_OK: {
-                "example": {'detail': 'Product quantity updated in the carts.'}
+                "example": {'detail': 'Product quantity updated in the cart.'}
             },
             status.HTTP_400_BAD_REQUEST: {
                 "example": {'error': 'Product does not exist.'}
@@ -106,7 +106,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
                 "example": {'error': 'Insufficient stock for product `{product_id}`.'}
             },
             status.HTTP_400_BAD_REQUEST: {
-                "example": {'error': 'Product is not in the carts.'}
+                "example": {'error': 'Product is not in the cart.'}
             },
             status.HTTP_400_BAD_REQUEST: {
                 "example": {'error': 'New quantity should be greater than 0.'}
@@ -124,7 +124,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
         try:
             product = Product.objects.get(id=product_id)
             open_cart.update_product_quantity_in_cart(product, quantity)
-            return Response({'detail': 'Product quantity updated in the carts.'}, status=status.HTTP_200_OK)
+            return Response({'detail': 'Product quantity updated in the cart.'}, status=status.HTTP_200_OK)
         except Product.DoesNotExist as e:
             return self._handle_exception_response(e)
         except ValueError as e:
@@ -142,7 +142,7 @@ class CustomerViewSet(mixins.RetrieveModelMixin,
                 "example": {'error': 'Insufficient stock for product `{product_id}`.'}
             },
             status.HTTP_400_BAD_REQUEST: {
-                "example": {'error': 'Product is not in the carts.'}
+                "example": {'error': 'Product is not in the cart.'}
             },
         }
     )
