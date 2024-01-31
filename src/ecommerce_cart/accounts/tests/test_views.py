@@ -50,7 +50,7 @@ def test_create_customer(api_client):
 @pytest.mark.django_db
 def test_add_product_to_cart(api_client, customer, open_cart, product):
     data = {'product_id': product.id, 'quantity': 2}
-    response = api_client.put(reverse('customer-add-product-to-carts', args=[customer.id]), data=data)
+    response = api_client.put(reverse('customer-add-product-to-cart', args=[customer.id]), data=data)
     assert response.status_code == status.HTTP_201_CREATED
     assert response.data['detail'] == 'Product added to the carts.'
 
@@ -61,7 +61,7 @@ def test_add_product_to_cart(api_client, customer, open_cart, product):
 def test_remove_product_from_cart(api_client, customer, open_cart, product):
     open_cart.products.add(product)
     data = {'product_id': product.id}
-    response = api_client.post(reverse('customer-remove-product-from-carts', args=[customer.id]), data=data)
+    response = api_client.post(reverse('customer-remove-product-from-cart', args=[customer.id]), data=data)
     print(response.data)
     assert response.status_code == status.HTTP_200_OK
     assert response.data['detail'] == 'Product removed from the carts.'
